@@ -1,7 +1,7 @@
 import Home from "../../pages/Home";
 export const ROUTES = [
   {
-    path: "/tguerini-portfolio",
+    path: "/portfolio-timoteoguerini",
     element: <Home/>,
   },
 ];
