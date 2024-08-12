@@ -57,6 +57,11 @@ const Home = () => {
   const [educationisOpen, setEducationIsOpen] = useState(false)
   const [isExperienceFading, setIsExperienceFading] = useState(false)
   const [isEducationFading, setIsEducationFading] = useState(false)
+  const [showAEClickToExpand, setShowAEClickToExpand] = useState(false)
+  const [showEducationClickToExpand, setShowEducationClickToExpand] =
+    useState(false)
+  const [showExperienceClickToExpand, setShowExperienceClickToExpand] =
+    useState(false)
   const [isAcademicExperienceOpen, setIsAcademicExperienceOpen] =
     useState(false)
   const [isAcademicExperienceFading, setIsAcademicExperienceFading] =
@@ -77,7 +82,7 @@ const Home = () => {
               />
             </div>
             <div class="flex flex-col">
-              <p class="w-full animate-fadeIn font-sans xl:text-6xl lg:text-5xl sm:text-5xl text-white">
+              <p class="w-full animate-fadeIn font-sans text-white sm:text-5xl lg:text-5xl xl:text-6xl">
                 Timoteo Güerini
               </p>
               <Typewriter
@@ -85,12 +90,12 @@ const Home = () => {
                 speed={60}
                 pause={700}
                 className={
-                  "text-left font-sans text-blue-300 sm:text-2xl xs:text-center xl:pl-2 xl:text-2xl xl:leading-normal"
+                  "xs:text-center text-left font-sans text-blue-300 sm:text-2xl xl:pl-2 xl:text-2xl xl:leading-normal"
                 }
               />
             </div>
           </div>
-          <div class='w-fit h-fit xl:col-span-1 lg:col-span-2 sm:col-span-2'>
+          <div class="h-fit w-fit sm:col-span-2 lg:col-span-2 xl:col-span-1">
             <Lottie animationData={skillsAnimation} />
           </div>
         </div>
@@ -148,11 +153,23 @@ const Home = () => {
           <p
             class={`font-sans text-5xl leading-normal text-white ${
               experienceisOpen
-                ? "col-span-2 pb-5 pl-5 pt-4 text-left"
-                : "col-span-1 p-10 text-center opacity-70 duration-200 hover:scale-105 hover:opacity-100"
+                ? "col-span-2 pl-5 pt-4 text-left"
+                : "clickable col-span-1 p-10 text-center opacity-70 duration-200 hover:scale-105 hover:opacity-100"
             } ${isExperienceFading ? "animate-fadeOut" : "animate-fadeIn"}`}
+            onMouseOver={() => setShowExperienceClickToExpand(true)}
+            onMouseLeave={() => setShowExperienceClickToExpand(false)}
           >
-            Work experience
+            Work experience{" "}
+            <p
+              class={`${experienceisOpen ? "hidden" : `${showExperienceClickToExpand ? "animate-bounce" : ""} inline-block`}`}
+            >
+              ↓
+            </p>
+            <p
+              class={`text-center text-xl text-blue-300 transition duration-500 ${!experienceisOpen && showExperienceClickToExpand ? "opacity-100" : "opacity-0"}`}
+            >
+              Click to open
+            </p>
           </p>
           {experienceisOpen ? renderJobCards() : ""}
         </div>
@@ -179,22 +196,34 @@ const Home = () => {
           <p
             class={`font-sans text-5xl leading-normal text-white ${
               educationisOpen
-                ? "col-span-2 animate-fadeIn pb-5 pl-7 pt-4 text-left"
-                : "col-span-1 p-10 text-center opacity-70 duration-200 hover:scale-105 hover:opacity-100"
+                ? "col-span-2 animate-fadeIn pl-7 pt-4 text-left"
+                : "clickable col-span-1 p-10 text-center opacity-70 duration-200 hover:scale-105 hover:opacity-100"
             } ${isEducationFading ? "animate-fadeOut" : "animate-fadeIn"}`}
+            onMouseOver={() => setShowEducationClickToExpand(true)}
+            onMouseLeave={() => setShowEducationClickToExpand(false)}
           >
-            Education
+            Education{" "}
+            <p
+              class={`${educationisOpen ? "hidden" : `${showEducationClickToExpand ? "animate-bounce " : ""} inline-block`}`}
+            >
+              ↓
+            </p>
+            <p
+              class={`text-center text-xl text-blue-300 transition duration-500 ${!educationisOpen && showEducationClickToExpand ? "opacity-100" : "opacity-0"}`}
+            >
+              Click to open
+            </p>
           </p>
           {educationisOpen ? renderEducationCards() : ""}
         </div>
       </div>
 
-      <div class={`container m-0 inline py-10 h-full`}>
+      <div class={`container m-0 inline h-full py-10`}>
         <div
           style={{ maxHeight: isAcademicExperienceOpen ? "2000px" : "300px" }}
           class={`${
             isAcademicExperienceOpen
-              ? "grid xl:grid-cols-4 sm:grid-cols-2 xs:grid-cols-1 sm:space-y-5 pb-20 pt-10 transition-[max-height] duration-700"
+              ? "xs:grid-cols-1 grid pb-20 pt-10 transition-[max-height] duration-700 sm:grid-cols-2 sm:space-y-5 xl:grid-cols-4"
               : "grid grid-cols-1 p-12 transition-[max-height] duration-700 hover:to-60%"
           } animate-fadeIn space-x-5 border-0 bg-gradient-to-r from-indigo-950 via-transparent to-25% px-40`}
           onClick={() => {
@@ -210,11 +239,23 @@ const Home = () => {
           <p
             class={`font-sans text-5xl leading-normal text-white ${
               isAcademicExperienceOpen
-                ? "xl:col-span-4 sm:col-span-2 animate-fadeIn pb-5 pl-8 pt-4 text-left"
-                : "col-span-1 p-10 text-center opacity-70 duration-200 hover:scale-105 hover:opacity-100"
+                ? "animate-fadeIn pl-8 pt-4 text-left sm:col-span-2 xl:col-span-4"
+                : "clickable col-span-1 p-10 text-center opacity-70 duration-200 hover:scale-105 hover:opacity-100"
             } ${isAcademicExperienceFading ? "animate-fadeOut" : "animate-fadeIn"}`}
+            onMouseOver={() => setShowAEClickToExpand(true)}
+            onMouseLeave={() => setShowAEClickToExpand(false)}
           >
-            Academic experience
+            Academic experience{" "}
+            <p
+              class={`${isAcademicExperienceOpen ? "hidden" : `${showAEClickToExpand ? "animate-bounce" : ""} inline-block`}`}
+            >
+              ↓
+            </p>
+            <p
+              class={`text-center text-xl text-blue-300 transition duration-500 ${!isAcademicExperienceOpen && showAEClickToExpand ? "opacity-100" : "opacity-0"}`}
+            >
+              Click to open
+            </p>
           </p>
           {isAcademicExperienceOpen ? renderProjectCards() : ""}
         </div>
