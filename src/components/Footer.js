@@ -33,6 +33,11 @@ const Footer = () => {
           <p class="pl-10 text-left text-2xl text-blue-300">
             <b>Phone number:</b> +54 11 6204-0576
           </p>
+          <p class="pl-10 text-left text-2xl text-blue-300">
+            <a href="https://www.linkedin.com/in/timoteo-guerini/">
+              <b>Linkedin profile</b> linkedin.com/in/timoteo-guerini
+            </a>
+          </p>
           <p class="underline-blue-300 pl-10 text-left text-2xl text-blue-300 underline">
             <a
               href="../resumes/CV-TIMOTEO GUERINI-EN.docx"
@@ -45,17 +50,17 @@ const Footer = () => {
             <a href="https://github.com/timoteoGuerini">
               <b>Github</b>
             </a>
-          </p>  
+          </p>
         </div>
         <div class="col-span-3 grid grid-cols-subgrid">
-            <div class='col-start-2'>
-              <p class="underline-blue-300 pl-10 text-left text-2xl text-blue-300 underline">
-                <a href="https://github.com/tguerini/portfolio-timoteoguerini">
-                  <b>Review this project!</b>
-                </a>
-              </p>
-            </div>
+          <div class="col-start-2">
+            <p class="underline-blue-300 pl-10 text-left text-2xl text-blue-300 underline">
+              <a href="https://github.com/tguerini/portfolio-timoteoguerini">
+                <b>Review this project!</b>
+              </a>
+            </p>
           </div>
+        </div>
       </div>
     </div>
   )
